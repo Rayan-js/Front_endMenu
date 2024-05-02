@@ -1,0 +1,68 @@
+1) 
+CSS Grid is ideal for complex and two-dimensional layouts, such as pages that require a defined structure of rows and columns. Use it for detailed designs that require precise alignment in two dimensions.
+
+Flexbox is best for simpler and linear layouts, where you want to align elements in a single row or column. It's great for automatically adjusting sizes and aligning items easily in one direction.
+
+**Choose Grid for complex structures and Flexbox for simple alignments or when elements need to fit within a specific space.**
+
+2)
+Authentication and authorization are crucial in backend development to ensure that only legitimate users access resources and perform allowed actions. Authentication checks who the user is, while authorization checks what they can do.
+
+3.1)
+Tables:
+Users
+user_id (Primary Key, Auto-Increment)
+username (VARCHAR, Unique)
+email (VARCHAR, Unique)
+password_hash (VARCHAR)
+profile_picture_url (VARCHAR, Nullable)
+Rationale Behind Design:
+Normalization: To reduce redundancy and improve data integrity. By using a single table with unique constraints on username and email, we ensure that these identifiers are unique across all users, preventing duplicate records.
+Password Storage: Passwords are stored as hashes to enhance security. Hashing passwords is crucial to protect user data even in the event of database access breaches.
+Profile Picture: Stored as a URL instead of binary data to keep the database lightweight. Storing images directly in databases can significantly increase database size and complexity.
+Primary Key: An auto-increment user_id is used for the primary key to uniquely identify each user, facilitating efficient indexing and lookup.
+This schema is designed to be straightforward for implementation while providing the necessary security and integrity for user data.
+
+
+3.2)SQL vs. NoSQL Databases
+
+SQL Databases (like MySQL, PostgreSQL):
+
+Structured: They use a predefined schema to organize data.
+Relational: Data is stored in tables and relationships are defined between these tables.
+ACID Compliance: Ensures reliability with transactions.
+NoSQL Databases (like MongoDB, Cassandra):
+
+Flexible: They use a dynamic schema for unstructured data.
+Scalable: Designed to scale out by distributing data across multiple machines.
+Variety: Support various data models including document, key-value, graph, or wide-column stores.
+When to Choose SQL:
+
+When you need complex queries and precise data integrity.
+Ideal for systems where every record needs to be consistent without exceptions, such as banking systems.
+When to Choose NoSQL:
+
+When dealing with large volumes of data that may not be structured.
+Useful in systems requiring high write speeds and scalability like real-time analytics or caching.
+
+5.1) Finding Two Numbers That Add Up to a Specific Target
+To solve this, you can use a hashmap to store the numbers you've seen so far and their indices. For each number in the array, check if the target sum minus that number is in the hashmap. If it is, you've found the two numbers. Here's a simple implementation:
+
+python
+Copy code
+def find_two_sum(nums, target):
+    num_map = {}
+    for index, num in enumerate(nums):
+        difference = target - num
+        if difference in num_map:
+            return [num_map[difference], index]
+        num_map[num] = index
+    return []
+5.2) Example of a Challenging Technical Problem
+Problem: In a web development project, I faced performance issues due to unnecessary re-renders in a React application.
+
+Approach: I used the React Developer Tools to profile the application and identify components that were re-rendering unnecessarily. I implemented shouldComponentUpdate and used React.memo to prevent re-renders by comparing props and state.
+
+Outcome: This significantly improved the application's performance, reducing the load time and making the user interface smoother.
+
+These answers provide a straightforward explanation of the solution to a coding problem and a brief overview of a practical approach to solving a common technical challenge in software development.
